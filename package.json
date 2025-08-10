@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "next": "^15.4.6",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  
+  },
+  "name": "devnews",
+  "version": "1.0.0",
+  "main": "index.html",
+  "repository": "https://github.com/andre8630/devnews",
+  "author": "Andre Luiz <andre8630@gmail.com>",
+  "license": "MIT"
+}
