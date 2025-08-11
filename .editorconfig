@@ -1,0 +1,6 @@
+root = true
+
+
+[*]
+endent_style = space
+endent_size = 2
