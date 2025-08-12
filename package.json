@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "next dev",
     "lint:check": "prettier --check .",
-    "lint:fix": "prettier --write ."
+    "lint:fix": "prettier --write .",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "name": "devnews",
   "version": "1.0.0",
@@ -16,6 +18,7 @@
   "author": "Andre Luiz <andre8630@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "jest": "^30.0.5",
     "prettier": "^3.6.2"
   }
 }
