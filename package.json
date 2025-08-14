@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "next": "^15.4.6",
+    "pg": "^8.16.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
@@ -9,7 +10,7 @@
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watchAll"
   },
   "name": "devnews",
   "version": "1.0.0",
