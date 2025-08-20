@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "dotenv": "^17.2.1",
     "next": "^15.4.6",
+    "node-pg-migrate": "6",
     "pg": "^8.16.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
@@ -13,7 +15,9 @@
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "migration:create": "node-pg-migrate create -m infra/migrations",
+    "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up"
   },
   "name": "devnews",
   "version": "1.0.0",
