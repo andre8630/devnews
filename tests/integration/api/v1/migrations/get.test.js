@@ -3,7 +3,7 @@ import database from "infra/database.js";
 beforeAll(cleanDataBase);
 
 async function cleanDataBase() {
-  await database("drop schema public cascade ; create schema public");
+  await database.query("drop schema public cascade ; create schema public");
 }
 
 test("GET to /api/v1/migrations", async () => {
