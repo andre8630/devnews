@@ -28,5 +28,12 @@ export default async function migrations(request, response) {
     await dbClient.end();
     return response.status(200).json(migratedMigrations);
   }
+  if (!request.method === "POST" || "GET") {
+    await dbClient.end();
+    return response
+      .status(404)
+      .json({ message: "End-point só aceita POST ou GET" });
+  }
+
   return response.status(405);
 }
