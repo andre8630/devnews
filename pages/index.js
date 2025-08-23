@@ -1,7 +1,7 @@
 function Home() {
   return (
     <div>
-      <h1>Welcome to DevNews Homoloção !</h1>
+      <h1>Welcome to DevNews Produção !</h1>
     </div>
   );
 }
