@@ -2,6 +2,7 @@
   "dependencies": {
     "dotenv": "^17.2.1",
     "dotenv-expand": "^12.0.2",
+    "jq": "^1.7.2",
     "next": "^15.4.6",
     "node-pg-migrate": "6",
     "pg": "^8.16.3",
@@ -9,7 +10,7 @@
     "react-dom": "^19.1.1"
   },
   "scripts": {
-    "dev": "yarn services:up && next dev",
+    "dev": "yarn services:up && yarn wait-for-postgres && migration:up && next dev",
     "services:up": "docker compose -f infra/compose.yaml up -d",
     "services:stop": "docker compose -f infra/compose.yaml stop",
     "services:down": "docker compose -f infra/compose.yaml down",
@@ -18,7 +19,8 @@
     "test": "jest --runInBand",
     "test:watch": "jest --watchAll --runInBand",
     "migration:create": "node-pg-migrate create -m infra/migrations",
-    "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up"
+    "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up",
+    "wait-for-postgres": "node infra/scripts/wait-for-postgres.js"
   },
   "name": "devnews",
   "version": "1.0.0",
