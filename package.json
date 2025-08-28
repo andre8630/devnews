@@ -10,7 +10,7 @@
     "react-dom": "^19.1.1"
   },
   "scripts": {
-    "dev": "yarn services:up && yarn wait-for-postgres && migration:up && next dev",
+    "dev": "yarn services:up && yarn wait-for-postgres && yarn migration:up && next dev",
     "services:up": "docker compose -f infra/compose.yaml up -d",
     "services:stop": "docker compose -f infra/compose.yaml stop",
     "services:down": "docker compose -f infra/compose.yaml down",

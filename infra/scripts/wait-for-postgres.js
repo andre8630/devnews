@@ -1,7 +1,7 @@
 const { exec } = require("node:child_process");
 
 function checkPostgres() {
-  exec("docker exec postgres-dev pg_isready", hanleReturn);
+  exec("docker exec postgres-dev pg_isready --host localhost", hanleReturn);
 
   function hanleReturn(error, stdout) {
     if (stdout.search("accepting connections") === -1) {
@@ -12,7 +12,6 @@ function checkPostgres() {
       return;
     }
     console.log("\n🟢 Conexão estabelecida com sucesso!\n");
-    console.log(error);
   }
 }
 
