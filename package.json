@@ -29,7 +29,7 @@
   "author": "Andre Luiz <andre8630@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^9.2.1",
+    "concurrently": "^8.2.2",
     "jest": "^30.0.5",
     "prettier": "^3.6.2"
   }
