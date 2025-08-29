@@ -13,6 +13,6 @@ jobs:
         with:
           node-version: "24.7.0"
 
-      - run: yarn ci
+      - run: yarn install --frozen-lockfile
 
       - run: yarn test
