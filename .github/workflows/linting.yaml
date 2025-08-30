@@ -16,3 +16,17 @@ jobs:
       - run: yarn install --immutable
 
       - run: yarn lint:prettier:check
+
+  eslint:
+    name: Eslint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "latest"
+
+      - run: yarn install --immutable
+
+      - run: yarn lint:eslint:check
