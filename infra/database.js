@@ -26,7 +26,8 @@ async function getNewClient() {
   return client;
 }
 
-export default {
+const dadabase = {
   query,
   getNewClient,
 };
+export default dadabase;
