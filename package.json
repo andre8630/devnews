@@ -13,10 +13,11 @@
     "typescript": "5"
   },
   "scripts": {
-    "dev": "yarn services:up && yarn wait-for-postgres && yarn migration:up && next dev",
+    "dev": "yarn services:up && yarn services:wait:database && yarn migration:up && next dev",
     "services:up": "docker compose -f infra/compose.yaml up -d",
     "services:stop": "docker compose -f infra/compose.yaml stop",
     "services:down": "docker compose -f infra/compose.yaml down",
+    "services:wait:database": "node infra/scripts/wait-for-postgres.js",
     "lint:eslint:check": "next lint --dir .",
     "lint:prettier:check": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
@@ -24,7 +25,6 @@
     "test:watch": "jest --watchAll --runInBand",
     "migration:create": "node-pg-migrate create -m infra/migrations",
     "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up",
-    "wait-for-postgres": "node infra/scripts/wait-for-postgres.js",
     "prepare": "husky",
     "commit": "cz"
   },
