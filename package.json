@@ -14,6 +14,8 @@
   },
   "scripts": {
     "dev": "yarn services:up && yarn services:wait:database && yarn migrations:up && next dev",
+    "test": "yarn services:up  && concurrently -n next,jest --hide next -k -s first \"next dev\" \"jest --silent --runInBand --verbose\"",
+    "test:watch": "jest --watchAll --runInBand",
     "services:up": "docker compose -f infra/compose.yaml up -d",
     "services:stop": "docker compose -f infra/compose.yaml stop",
     "services:down": "docker compose -f infra/compose.yaml down",
@@ -23,8 +25,6 @@
     "lint:eslint:check": "next lint --dir .",
     "lint:prettier:check": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
-    "test": "yarn services:up  && concurrently -n next,jest --hide next -k -s first \"next dev\" \"jest --silent --runInBand --verbose\"",
-    "test:watch": "jest --watchAll --runInBand",
     "prepare": "husky",
     "commit": "cz"
   },
