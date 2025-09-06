@@ -42,11 +42,10 @@ function DatabaseStatus() {
   if (!isLoading && data) {
     dataBaseDados = (
       <>
-        <h1>Banco de dados</h1>
         <div>Status do banco : {data.status}</div>
         <div>Versao do banco : {data.dependencies.database.version}</div>
         <div>
-          Conexçoes abertas : {data.dependencies.database.current_connections}
+          Conexões abertas : {data.dependencies.database.current_connections}
         </div>
         <div>
           Maximo de conexoes : {data.dependencies.database.max_connections}
@@ -55,5 +54,10 @@ function DatabaseStatus() {
     );
   }
 
-  return <div>{dataBaseDados}</div>;
+  return (
+    <>
+      <h1>Banco de dados</h1>
+      <div>{dataBaseDados}</div>
+    </>
+  );
 }
