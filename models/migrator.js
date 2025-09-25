@@ -7,7 +7,8 @@ const migrationsValues = {
   dryRun: true,
   dir: join(process.cwd(), "infra", "migrations"), // <-- garante compatibilidade
   direction: "up",
-  verbose: true,
+  verbose: false,
+  log: () => {},
   migrationsTable: "pgmigrations",
 };
 
