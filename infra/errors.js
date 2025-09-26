@@ -37,6 +37,26 @@ export class ServiceError extends Error {
     };
   }
 }
+
+export class ValidateError extends Error {
+  constructor({ cause, message, action }) {
+    super(message || "Um erro de validaçao ocorreu", {
+      cause,
+    });
+    this.name = "Validate Error";
+    this.action = action || "Entre em contato com suporte";
+    this.statusCode = 400;
+  }
+
+  toJSON() {
+    return {
+      message: this.message,
+      name: this.name,
+      action: this.action,
+      status_code: this.statusCode,
+    };
+  }
+}
 export class NotAllowedMethodError extends Error {
   constructor() {
     super("Metodo nao permitido nesse endpoint");
