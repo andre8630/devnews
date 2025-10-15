@@ -57,6 +57,26 @@ export class ValidateError extends Error {
     };
   }
 }
+
+export class NotFoundError extends Error {
+  constructor({ cause, message, action }) {
+    super(message || "Um erro foi reportado", {
+      cause,
+    });
+    this.name = "NotFoundError";
+    this.action = action || "Verifique se o username está correto";
+    this.statusCode = 404;
+  }
+
+  toJSON() {
+    return {
+      message: this.message,
+      name: this.name,
+      action: this.action,
+      status_code: this.statusCode,
+    };
+  }
+}
 export class NotAllowedMethodError extends Error {
   constructor() {
     super("Metodo nao permitido nesse endpoint");
