@@ -1,4 +1,6 @@
 import orchestrator from "tests/orchestrator";
+import user from "models/user";
+import password from "models/password";
 
 beforeAll(async () => {
   await orchestrator.waitForAllServices();
@@ -28,13 +30,27 @@ describe("POST /api/v1/users", () => {
         id: responseBody.id,
         username: "Andre Luiz",
         email: "andre@email.com",
-        password: "senha123",
+        password: responseBody.password,
         created_at: responseBody.created_at,
         updated_at: responseBody.updated_at,
       });
 
       expect(Date.parse(responseBody.created_at)).not.toBeNaN();
       expect(Date.parse(responseBody.updated_at)).not.toBeNaN();
+
+      const userInDataBase = await user.findOneByUserName("Andre Luiz");
+      const correctPasswordMath = await password.compare(
+        "senha123",
+        userInDataBase.password,
+      );
+
+      const incorrectPasswordMath = await password.compare(
+        "senhaIncorreta",
+        userInDataBase.password,
+      );
+
+      expect(correctPasswordMath).toBe(true);
+      expect(incorrectPasswordMath).toBe(false);
     });
 
     test("With diplicate 'email'", async () => {
