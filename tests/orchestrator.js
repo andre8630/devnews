@@ -1,6 +1,7 @@
 import retry from "async-retry";
 import database from "infra/database";
 import migration from "models/migrator";
+import user from "models/user";
 
 async function waitForAllServices() {
   await waitForWebServer();
@@ -27,9 +28,19 @@ async function clearDatabase() {
 async function runPendingMigrations() {
   await migration.runPendingMigrations();
 }
+
+async function createUser(userObject) {
+  await user.create({
+    username: userObject.username,
+    email: userObject.email,
+    password: userObject.password || "senhapadrao",
+  });
+}
+
 const orchastrator = {
   waitForAllServices,
   clearDatabase,
   runPendingMigrations,
+  createUser,
 };
 export default orchastrator;
