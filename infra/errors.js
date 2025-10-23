@@ -94,3 +94,23 @@ export class NotAllowedMethodError extends Error {
     };
   }
 }
+
+export class unauthorizedError extends Error {
+  constructor({ cause, message, action }) {
+    super(message || "Um erro de validaçao ocorreu", {
+      cause,
+    });
+    this.name = "unauthorizedError";
+    this.action = action || "Entre em contato com suporte";
+    this.statusCode = 401;
+  }
+
+  toJSON() {
+    return {
+      message: this.message,
+      name: this.name,
+      action: this.action,
+      status_code: this.statusCode,
+    };
+  }
+}
