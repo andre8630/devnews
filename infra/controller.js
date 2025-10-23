@@ -1,4 +1,4 @@
-import { NotFoundError, ValidateError } from "./errors";
+import { NotFoundError, unauthorizedError, ValidateError } from "./errors";
 import { InternalServerError, NotAllowedMethodError } from "/infra/errors.js";
 
 function onNoMatchHandler(request, response) {
@@ -7,7 +7,11 @@ function onNoMatchHandler(request, response) {
 }
 
 function onErrorHandler(error, request, response) {
-  if (error instanceof ValidateError || error instanceof NotFoundError) {
+  if (
+    error instanceof ValidateError ||
+    error instanceof NotFoundError ||
+    error instanceof unauthorizedError
+  ) {
     return response.status(error.statusCode).json(error);
   }
 
